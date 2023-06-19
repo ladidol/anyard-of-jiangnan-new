@@ -1,0 +1,126 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allow-credentials: true
+            allowed-headers: "*"
+            # 半个月内都允许
+            max-age: 1296000
+            # 测试环境，全部允许
+            allowedOriginPatterns: "*"
+              # allowedOrigins:
+              # - "http://localhost:9527"
+              # - "http://localhost:9527"
+              # - "http://localhost:9528"
+              # - "http://localhost:9529"
+            # - "http://:9527"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - OPTIONS
+              - DELETE
+      discovery:
+        locator:
+          # 开启服务注册和发现
+          enabled: true
+          # 不手动写路由的话，swagger整合不了...
+      routes:
+        - id: anyard-of-jiangnan-rbac
+          uri: lb://anyard-of-jiangnan-rbac
+          predicates:
+            - Path=/anyard-of-jiangnan-rbac/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-rbac(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-auth
+          uri: lb://anyard-of-jiangnan-auth
+          predicates:
+            - Path=/anyard-of-jiangnan-auth/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-auth(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-multishop
+          uri: lb://anyard-of-jiangnan-multishop
+          predicates:
+            - Path=/anyard-of-jiangnan-multishop/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-multishop(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-biz
+          uri: lb://anyard-of-jiangnan-biz
+          predicates:
+            - Path=/anyard-of-jiangnan-biz/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-biz(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-product
+          uri: lb://anyard-of-jiangnan-product
+          predicates:
+            - Path=/anyard-of-jiangnan-product/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-product(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-user
+          uri: lb://anyard-of-jiangnan-user
+          predicates:
+            - Path=/anyard-of-jiangnan-user/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-user(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-order
+          uri: lb://anyard-of-jiangnan-order
+          predicates:
+            - Path=/anyard-of-jiangnan-order/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-order(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-delivery
+          uri: lb://anyard-of-jiangnan-delivery
+          predicates:
+            - Path=/anyard-of-jiangnan-delivery/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-delivery(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-discount
+          uri: lb://anyard-of-jiangnan-discount
+          predicates:
+            - Path=/anyard-of-jiangnan-discount/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-discount(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-platform
+          uri: lb://anyard-of-jiangnan-platform
+          predicates:
+            - Path=/anyard-of-jiangnan-platform/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-platform(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-search
+          uri: lb://anyard-of-jiangnan-search
+          predicates:
+            - Path=/anyard-of-jiangnan-search/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-search(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-coupon
+          uri: lb://anyard-of-jiangnan-coupon
+          predicates:
+            - Path=/anyard-of-jiangnan-coupon/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-coupon(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-payment
+          uri: lb://anyard-of-jiangnan-payment
+          predicates:
+            - Path=/anyard-of-jiangnan-payment/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-payment(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-group
+          uri: lb://anyard-of-jiangnan-group
+          predicates:
+            - Path=/anyard-of-jiangnan-group/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-group(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-seckill
+          uri: lb://anyard-of-jiangnan-seckill
+          predicates:
+            - Path=/anyard-of-jiangnan-seckill/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-seckill(?<segment>/?.*), $\{segment}
+        - id: anyard-of-jiangnan-flow
+          uri: lb://anyard-of-jiangnan-flow
+          predicates:
+            - Path=/anyard-of-jiangnan-flow/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-flow(?<segment>/?.*), $\{segment}

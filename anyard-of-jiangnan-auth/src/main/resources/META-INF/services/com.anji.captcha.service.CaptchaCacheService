@@ -1,0 +1,2 @@
+com.anji.captcha.service.impl.CaptchaCacheServiceMemImpl
+org.cuit.fhzheng.auth.adapter.CaptchaCacheServiceRedisImpl

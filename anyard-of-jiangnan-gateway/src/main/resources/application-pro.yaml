@@ -1,0 +1,126 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allow-credentials: true
+            allowed-headers: "*"
+            # 半个月内都允许
+            max-age: 1296000
+            # 测试环境，全部允许
+            allowedOriginPatterns: "*"
+              # allowedOrigins:
+              # - "http://localhost:9527"
+              # - "http://localhost:9527"
+              # - "http://localhost:9528"
+              # - "http://localhost:9529"
+            # - "http://:9527"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - OPTIONS
+              - DELETE
+      discovery:
+        locator:
+          # 开启服务注册和发现
+          enabled: true
+          # 不手动写路由的话，swagger整合不了...
+      routes:
+        - id: mall4cloud-rbac
+          uri: lb://mall4cloud-rbac
+          predicates:
+            - Path=/mall4cloud_rbac/**
+          filters:
+            - RewritePath=/mall4cloud_rbac(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-auth
+          uri: lb://mall4cloud-auth
+          predicates:
+            - Path=/mall4cloud_auth/**
+          filters:
+            - RewritePath=/mall4cloud_auth(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-multishop
+          uri: lb://mall4cloud-multishop
+          predicates:
+            - Path=/mall4cloud_multishop/**
+          filters:
+            - RewritePath=/mall4cloud_multishop(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-biz
+          uri: lb://mall4cloud-biz
+          predicates:
+            - Path=/mall4cloud_biz/**
+          filters:
+            - RewritePath=/mall4cloud_biz(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-product
+          uri: lb://mall4cloud-product
+          predicates:
+            - Path=/mall4cloud_product/**
+          filters:
+            - RewritePath=/mall4cloud_product(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-user
+          uri: lb://mall4cloud-user
+          predicates:
+            - Path=/mall4cloud_user/**
+          filters:
+            - RewritePath=/mall4cloud_user(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-order
+          uri: lb://mall4cloud-order
+          predicates:
+            - Path=/mall4cloud_order/**
+          filters:
+            - RewritePath=/mall4cloud_order(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-delivery
+          uri: lb://mall4cloud-delivery
+          predicates:
+            - Path=/anyard-of-jiangnan-delivery/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-delivery(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-discount
+          uri: lb://mall4cloud-discount
+          predicates:
+            - Path=/anyard-of-jiangnan-discount/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-discount(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-platform
+          uri: lb://mall4cloud-platform
+          predicates:
+            - Path=/anyard-of-jiangnan-platform/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-platform(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-search
+          uri: lb://mall4cloud-search
+          predicates:
+            - Path=/anyard-of-jiangnan-search/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-search(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-coupon
+          uri: lb://mall4cloud-coupon
+          predicates:
+            - Path=/mall4cloud_coupon/**
+          filters:
+            - RewritePath=/mall4cloud_coupon(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-payment
+          uri: lb://mall4cloud-payment
+          predicates:
+            - Path=/anyard-of-jiangnan-payment/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-payment(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-group
+          uri: lb://mall4cloud-group
+          predicates:
+            - Path=/anyard-of-jiangnan-group/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-group(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-seckill
+          uri: lb://mall4cloud-seckill
+          predicates:
+            - Path=/anyard-of-jiangnan-seckill/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-seckill(?<segment>/?.*), $\{segment}
+        - id: mall4cloud-flow
+          uri: lb://mall4cloud-flow
+          predicates:
+            - Path=/anyard-of-jiangnan-flow/**
+          filters:
+            - RewritePath=/anyard-of-jiangnan-flow(?<segment>/?.*), $\{segment}
