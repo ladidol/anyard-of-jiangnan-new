@@ -1,11 +1,11 @@
 <template>
   <div class="login-container">
     <div class="login-frame">
-      <div class="login-img">
-        <img src="~@/assets/images/login-img.jpg">
-      </div>
+<!--      <div class="login-img">-->
+<!--        <img src="~@/assets/images/login-img.jpg">-->
+<!--      </div>-->
       <div class="login-info">
-        <div class="title">蓝海商家端管理系统</div>
+        <div class="title">江南皮革厂-商家端管理系统</div>
         <div class="input-box">
           <div class="number inp-item" :class="[selectItem==='username'? 'selected' : '', usernameErrTips? 'err-line' : '']">
             <img src="~@/assets/images/number.png">
@@ -45,7 +45,7 @@
         </el-dropdown>
       </div>
     </div>
-    <div class="bottom">Copyright 2018-2021 广州市蓝海创新科技有限公司</div>
+    <div class="bottom">Copyright 2023 成都信息工程大学工程实践第五小组</div>
     <Verify
       v-if="initVerify"
       ref="verify"
