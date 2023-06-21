@@ -22,7 +22,7 @@ import java.util.Objects;
 /**
  * 上传文件记录表
  *
- * @author YXF
+ * @author
  * @date 2020-11-21 10:21:40
  */
 @RestController("multishopAttachFileController")

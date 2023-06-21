@@ -32,6 +32,6 @@ public class SwaggerConfiguration {
 				.info(new Info().title("anyard-of-jiangnan商城接口文档")
 						.description("anyard-of-jiangnan商城接口文档Swagger版")
 						.version("v0.0.1")
-						.license(new License().name("使用请遵守商用授权协议").url("https://www.mall4j.com")));
+						.license(new License().name("使用请遵守商用授权协议").url("https://gitee.com/fhzheng/anyard-of-jiangnan")));
 	}
 }
