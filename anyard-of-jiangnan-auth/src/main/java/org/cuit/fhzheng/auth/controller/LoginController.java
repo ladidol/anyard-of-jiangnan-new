@@ -46,9 +46,9 @@ public class LoginController {
 
 		// 这边获取了用户的用户信息，那么根据sessionid对应一个user的原则，我应该要把这个东西存起来，然后校验，那么存到哪里呢？
 		// redis，redis有天然的自动过期的机制，有key value的形式
-		ServerResponseEntity<UserInfoInTokenBO> userInfoInTokenResponse = authAccountService
-				.getUserInfoInTokenByInputUserNameAndPassword(authenticationDTO.getPrincipal(),
-						authenticationDTO.getCredentials(), authenticationDTO.getSysType());
+		ServerResponseEntity<UserInfoInTokenBO> userInfoInTokenResponse =
+				authAccountService
+						.getUserInfoInTokenByInputUserNameAndPassword(authenticationDTO.getPrincipal(), authenticationDTO.getCredentials(), authenticationDTO.getSysType());
 
 
 		if (!userInfoInTokenResponse.isSuccess()) {
