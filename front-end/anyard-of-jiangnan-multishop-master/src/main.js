@@ -20,6 +20,8 @@ import './permission' // permission control
 import moment from 'moment'
 
 import * as filters from './filters' // global filters
+import tagCloud from '@/views/product/baobiao/tag-cloud'
+import ECharts from "vue-echarts";
 
 Vue.use(Element, {
   size: Cookies.get('size') || 'medium', // set element-ui default size
@@ -35,6 +37,8 @@ Object.keys(filters).forEach(key => {
 })
 
 Vue.config.productionTip = false
+Vue.use(tagCloud)
+Vue.component("v-chart", ECharts);
 
 new Vue({
   el: '#app',

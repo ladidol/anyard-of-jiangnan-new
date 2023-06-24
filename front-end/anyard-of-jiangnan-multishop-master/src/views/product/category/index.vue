@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import permission from '@/directive/permission/index.js'
+import permission from '@/directive/permission'
 // import Pagination from '@/components/Pagination'
 import AddOrUpdate from './add-or-update.vue'
 import * as api from '@/api/product/category'
