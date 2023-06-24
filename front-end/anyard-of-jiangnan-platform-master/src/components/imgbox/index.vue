@@ -421,7 +421,7 @@ export default {
               }
             })
           })
-          return
+
         }
       })
     },
@@ -495,7 +495,7 @@ export default {
         if (img.attachFileGroupId == el.attachFileGroupId) {
           this.groupForm.name = el.name
           this.groupForm.attachFileGroupId = el.attachFileGroupId
-          return
+
         } else {
           this.groupForm.name = null
           this.groupForm.attachFileGroupId = null
@@ -652,7 +652,7 @@ export default {
      */
     httpRequest(event) {
       console.log('上传图片event:', event)
-      
+
       let file = event.file
       let typeArray = file.type.split('/')
       const attachFile = Object.assign({

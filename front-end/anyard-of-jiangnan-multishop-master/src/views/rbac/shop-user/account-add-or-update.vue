@@ -2,15 +2,15 @@
   <el-dialog :title="dataForm.hasAccount? $t('table.edit'): $t('table.create')" :visible.sync="visible">
     <el-form ref="dataForm" :rules="rules" :model="dataForm" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
       <!-- 用户名 -->
-      <el-form-item :label="$t('multishop.shopUserAccount.username')" prop="username">
+      <el-form-item :label="$t('rbac.shopUserAccount.username')" prop="username">
         <el-input v-model="dataForm.username" />
       </el-form-item>
       <!-- 密码 -->
-      <el-form-item :label="$t('multishop.shopUserAccount.password')" prop="password">
+      <el-form-item :label="$t('rbac.shopUserAccount.password')" prop="password">
         <el-input v-model="dataForm.password" show-password />
       </el-form-item>
       <!-- 状态 -->
-      <el-form-item :label="$t('multishop.shopUserAccount.status')" prop="status">
+      <el-form-item :label="$t('rbac.shopUserAccount.status')" prop="status">
         <el-radio-group v-model="dataForm.status">
           <el-radio :label="1">启用</el-radio>
           <el-radio :label="0">禁用</el-radio>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import * as api from '@/api/multishop/shop-user-account'
+import * as api from '@/api/rbac/shop-user-account'
 import { USER_NAME_REGEXP } from '@/utils/validate'
 
 export default {

@@ -44,15 +44,15 @@
       </div>
       <el-form-item :label="this.$i18n.t('order.order.deliveryMethod') + ':'">
         <el-radio-group v-model="dataForm.deliveryType" @change="clear()">
-          <el-radio :label="1" disabled>{{
+          <!--<el-radio :label="1" disabled>{{
             $t("order.order.selfConOrd")
-          }}</el-radio>
+          }}</el-radio>-->
           <el-radio :label="3">{{
             $t("order.order.noNeedRequired")
           }}</el-radio>
-          <el-radio :label="4" disabled>{{
+          <!--<el-radio :label="4" disabled>{{
             $t("order.order.sameCityDelivery")
-          }}</el-radio>
+          }}</el-radio>-->
         </el-radio-group>
       </el-form-item>
     </el-form>

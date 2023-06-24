@@ -1,5 +1,5 @@
 import { login, logout } from '@/api/auth/auth'
-import { shopUserInfo } from '@/api/multishop/shop-user'
+import { shopUserInfo } from '@/api/rbac/shop-user'
 import { menuPermissionsList } from '@/api/rbac/menu-permission'
 import { listMenuIds } from '@/api/rbac/menu'
 import { getToken, setToken, removeToken } from '@/utils/auth'

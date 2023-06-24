@@ -2,8 +2,7 @@
   <div class="app-container">
     <!-- 搜索相关区域 -->
     <div class="filter-container">
-      <el-button size="mini" icon="el-icon-search" class="filter-item" @click="getPage()">{{ $t('table.search') }}</el-button>
-      <el-button v-permission="['rbac:menuPermission:save']" size="mini" icon="el-icon-plus" type="primary" class="filter-item" @click="addOrUpdateHandle()">{{ $t('table.create') }}</el-button>
+      <el-button v-permission="['rbac:shopUser:save']" size="mini" icon="el-icon-plus" type="primary" class="filter-item" @click="addOrUpdateHandle()">{{ $t('table.create') }}</el-button>
     </div>
 
     <!-- 列表相关区域 -->
@@ -15,42 +14,42 @@
       highlight-current-row
       style="width: 100%;"
     >
-      <!-- 资源关联菜单 -->
-      <el-table-column :label="$t('rbac.menuPermission.menuTitle')" prop="menuTitle" align="center">
+      <!-- 昵称 -->
+      <el-table-column :label="$t('rbac.shopUser.nickName')" prop="nickName" align="center" width="250">
         <template slot-scope="{row}">
-          <span>{{ row.menuTitle }}</span>
+          <span>{{ row.nickName }}</span>
         </template>
       </el-table-column>
-      <!-- 资源名称 -->
-      <el-table-column :label="$t('rbac.menuPermission.name')" prop="name" align="center">
+      <!-- 头像 -->
+      <el-table-column :label="$t('rbac.shopUser.avatar')" prop="avatar" align="center" width="100">
         <template slot-scope="{row}">
-          <span>{{ row.name }}</span>
+          <el-image :src="row.avatar" fit="contain" />
         </template>
       </el-table-column>
-      <!-- 权限对应的编码 -->
-      <el-table-column :label="$t('rbac.menuPermission.permission')" prop="permission" align="center">
+      <!-- 员工编号 -->
+      <el-table-column :label="$t('rbac.shopUser.code')" prop="code" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.permission }}</span>
+          <span>{{ row.code }}</span>
         </template>
       </el-table-column>
-      <!-- 资源对应服务器路径 -->
-      <el-table-column :label="$t('rbac.menuPermission.uri')" prop="uri" align="center">
+      <!-- 联系方式 -->
+      <el-table-column :label="$t('rbac.shopUser.phoneNum')" prop="phoneNum" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.uri }}</span>
-        </template>
-      </el-table-column>
-      <!-- 请求方法 -->
-      <el-table-column :label="$t('rbac.menuPermission.method')" prop="method" align="center">
-        <template slot-scope="{row}">
-          <span>{{ ['', 'GET', 'POST', 'PUT', 'DELETE'][row.method] }}</span>
+          <span>{{ row.phoneNum }}</span>
         </template>
       </el-table-column>
       <el-table-column :label="$t('table.actions')" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="{row}">
-          <el-button v-permission="['rbac:menuPermission:update']" type="text" @click="addOrUpdateHandle(row.menuPermissionId)">
+          <el-button v-if="!row.hasAccount" v-permission="['account:authAccount:shopSave']" type="text" @click="addOrUpdateAccountHandle(row.shopUserId,row.hasAccount)">
+            设置账号
+          </el-button>
+          <el-button v-if="row.hasAccount" v-permission="['account:authAccount:shopUpdate']" type="text" @click="addOrUpdateAccountHandle(row.shopUserId,row.hasAccount)">
+            修改账号
+          </el-button>
+          <el-button v-permission="['rbac:shopUser:update']" type="text" @click="addOrUpdateHandle(row.shopUserId)">
             {{ $t('table.edit') }}
           </el-button>
-          <el-button v-permission="['rbac:menuPermission:delete']" type="text" @click="deleteHandle(row.menuPermissionId)">
+          <el-button v-permission="['rbac:shopUser:delete']" type="text" @click="deleteHandle(row.shopUserId)">
             {{ $t('table.delete') }}
           </el-button>
         </template>
@@ -60,6 +59,8 @@
     <pagination v-show="pageVO.total>0" :total="pageVO.total" :page.sync="pageQuery.pageNum" :limit.sync="pageQuery.pageSize" @pagination="getPage()" />
     <!-- 弹窗, 新增 / 修改 -->
     <add-or-update v-if="addOrUpdateVisible" ref="addOrUpdate" @refreshDataList="getPage()" />
+    <!-- 账户弹窗, 新增 / 修改 -->
+    <account-add-or-update v-if="accountaddOrUpdateVisible" ref="accountAddOrUpdate" @refreshDataList="getPage()" />
   </div>
 </template>
 
@@ -67,11 +68,12 @@
 import permission from '@/directive/permission/index.js'
 import Pagination from '@/components/Pagination'
 import AddOrUpdate from './add-or-update.vue'
-import * as api from '@/api/rbac/menu-permission'
+import AccountAddOrUpdate from './account-add-or-update.vue'
+import * as api from '@/api/rbac/shop-user'
 
 export default {
   name: '',
-  components: { Pagination, AddOrUpdate },
+  components: { Pagination, AddOrUpdate, AccountAddOrUpdate },
   directives: { permission },
   data() {
     return {
@@ -91,7 +93,8 @@ export default {
       // 查询参数
       searchParam: {
       },
-      addOrUpdateVisible: false
+      addOrUpdateVisible: false,
+      accountaddOrUpdateVisible: false
     }
   },
   mounted() {
@@ -105,21 +108,27 @@ export default {
         this.pageLoading = false
       })
     },
-    addOrUpdateHandle(menuPermissionId) {
+    addOrUpdateHandle(shopUserId) {
       this.addOrUpdateVisible = true
       this.$nextTick(() => {
-        this.$refs.addOrUpdate.init(menuPermissionId)
+        this.$refs.addOrUpdate.init(shopUserId)
       })
     },
-    deleteHandle(menuPermissionId) {
+    addOrUpdateAccountHandle(shopUserId, hasAccount) {
+      this.accountaddOrUpdateVisible = true
+      this.$nextTick(() => {
+        this.$refs.accountAddOrUpdate.init(shopUserId, hasAccount)
+      })
+    },
+    deleteHandle(shopUserId) {
       this.$confirm(this.$t('table.sureToDelete'), this.$t('table.tips'), {
         confirmButtonText: this.$t('table.confirm'),
         cancelButtonText: this.$t('table.cancel'),
         type: 'warning'
-      }).then(() => this.deleteById(menuPermissionId))
+      }).then(() => this.deleteById(shopUserId))
     },
-    deleteById(menuPermissionId) {
-      api.deleteById(menuPermissionId).then(() => {
+    deleteById(shopUserId) {
+      api.deleteById(shopUserId).then(() => {
         this.$message({
           message: this.$t('table.actionSuccess'),
           type: 'success',

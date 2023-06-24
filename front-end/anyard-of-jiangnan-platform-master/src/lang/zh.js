@@ -1,18 +1,14 @@
-import spu from './product/spu/zh'
 import attr from './product/attr/zh'
 import brand from './product/brand/zh'
 import category from './product/category/zh'
 import shopUser from './platform/sys-user/zh'
-import hotSearch from './platform/hot-search/zh'
 import imgbox from './biz/imgbox/zh'
 import role from './rbac/role/zh'
 import menu from './rbac/menu/zh'
 import menuPermission from './rbac/menu-permission/zh'
 import selector from './components/category-selector/zh'
 import shopUserAccount from './platform/sys-user-account/zh'
-import score from './user/score/zh'
 import config from './platform/config/zh'
-import notice from './platform/notice/zh'
 
 export default {
   route: {
@@ -73,21 +69,15 @@ export default {
   platform: {
     config,
     shopUser,
-    hotSearch,
-    shopUserAccount,
-    notice
+    shopUserAccount
   },
   product: {
     attr,
     brand,
-    category,
-    spu
+    category
   },
   biz: {
     imgbox
-  },
-  user: {
-    score
   },
   components: {
     selector

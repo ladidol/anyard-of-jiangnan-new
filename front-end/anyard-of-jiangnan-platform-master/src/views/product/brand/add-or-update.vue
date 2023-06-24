@@ -155,7 +155,7 @@ export default {
           if (item === categoryId) {
             this.selectedCategories.splice(index, 1)
             this.dataForm.categoryIds.splice(index, 1)
-            return
+
           }
         })
       }

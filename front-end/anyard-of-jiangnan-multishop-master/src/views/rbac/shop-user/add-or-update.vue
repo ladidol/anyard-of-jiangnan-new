@@ -2,20 +2,20 @@
   <el-dialog :title="dataForm.shopUserId? $t('table.edit'): $t('table.create')" :visible.sync="visible">
     <el-form ref="dataForm" :rules="dataRule" :model="dataForm" label-position="right" label-width="80px">
       <!-- 昵称 -->
-      <el-form-item :label="$t('multishop.shopUser.nickName')" prop="nickName">
+      <el-form-item :label="$t('rbac.shopUser.nickName')" prop="nickName">
         <el-input v-model="dataForm.nickName" />
       </el-form-item>
       <!-- 头像 -->
-      <el-form-item :label="$t('multishop.shopUser.avatar')" prop="avatar" label-width="80px">
+      <el-form-item :label="$t('rbac.shopUser.avatar')" prop="avatar" label-width="80px">
         <img-upload v-model="dataForm.avatar" />
         <!-- <pic-upload v-model="dataForm.avatar" /> -->
       </el-form-item>
       <!-- 员工编号 -->
-      <el-form-item :label="$t('multishop.shopUser.code')" prop="code">
+      <el-form-item :label="$t('rbac.shopUser.code')" prop="code">
         <el-input v-model="dataForm.code" />
       </el-form-item>
       <!-- 联系方式 -->
-      <el-form-item :label="$t('multishop.shopUser.phoneNum')" prop="phoneNum">
+      <el-form-item :label="$t('rbac.shopUser.phoneNum')" prop="phoneNum">
         <el-input v-model="dataForm.phoneNum" />
       </el-form-item>
       <!-- 选择角色 -->
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import * as api from '@/api/multishop/shop-user'
+import * as api from '@/api/rbac/shop-user'
 // import PicUpload from '@/components/PicUpload'
 import * as roleApi from '@/api/rbac/role'
 import ImgUpload from '@/components/ImgUpload'
