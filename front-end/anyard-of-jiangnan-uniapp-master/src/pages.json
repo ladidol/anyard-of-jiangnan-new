@@ -49,6 +49,12 @@
 			}
 		},
 		{
+			"path": "pages/protocol/protocol",
+			"style": {
+				"navigationBarTitleText": "用户协议"
+			}
+		},
+		{
 			"path": "pages/detail/detail",
 			"style": {
 				"navigationBarTitleText": "商品详情"

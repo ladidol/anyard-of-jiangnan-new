@@ -1,15 +1,12 @@
-import spu from './product/spu/zh'
 import attr from './product/attr/zh'
 import category from './product/category/zh'
-import notice from './multishop/notice/zh'
-import shopUser from './multishop/shop-user/zh'
-import hotSearch from './multishop/hot-search/zh'
+import shopUser from './rbac/shop-user/zh'
 import imgbox from './biz/imgbox/zh'
 import role from './rbac/role/zh'
 import menu from './rbac/menu/zh'
 import menuPermission from './rbac/menu-permission/zh'
 import selector from './components/category-selector/zh'
-import shopUserAccount from './multishop/shop-user-account/zh'
+import shopUserAccount from './rbac/shop-user-account/zh'
 import order from './order/order/zh'
 import constant from './constant/zh'
 import admin from './admin/zh'
@@ -87,19 +84,14 @@ export default {
   rbac: {
     role,
     menu,
-    menuPermission
-  },
-  multishop: {
-    hotSearch,
+    menuPermission,
     shopUser,
-    notice,
     shopUserAccount
   },
   product: {
     ...product,
     attr,
-    category,
-    spu
+    category
   },
   biz: {
     imgbox

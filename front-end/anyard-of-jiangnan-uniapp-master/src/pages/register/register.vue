@@ -19,6 +19,13 @@
       </view>
       <view v-if="errorTips == 6" class="error"><text class="error-icon">!</text>确认密码不能为空</view>
       <view v-if="errorTips == 7" class="error"><text class="error-icon">!</text>两次输入的密码不一致，请重新输入</view>
+      <view class="item">
+        <checkbox-group @change="isAcceptProtocol">
+          <checkbox class="checkbox" :checked="acceptProtocol"></checkbox>
+        </checkbox-group>
+        <span class="protocol-text">同意<a href="/pages/protocol/protocol">《用户协议》</a></span>
+      </view>
+      <view v-if="errorTips == 8" class="error"><text class="error-icon">!</text>请勾选“同意《用户协议》”</view>
       <view class="btn" @tap="getRegister">注册</view>
     </view>
     <!-- 注册成功 -->
@@ -47,6 +54,7 @@ export default {
       confirmPwd: '', // 确认密码
       nickName: '', // 昵称
       userName: '', // 用户名
+      acceptProtocol: false, // 用户协议
 
       errorTips: 0, // 输入错误提示
 
@@ -102,8 +110,18 @@ export default {
         this.errorTips = 7
         return false
       }
+      if (this.acceptProtocol != true) {
+        this.errorTips = 8
+        return false
+      }
       this.errorTips = 0
       return true
+    },
+
+    // 判断复选框是否选中
+    isAcceptProtocol(e) {
+      this.acceptProtocol = !this.acceptProtocol
+      this.validate()
     },
 
     // 去登录
@@ -164,4 +182,15 @@ export default {
 <style>
 @import "../login/login.css";
 @import "../../popup.css";
+.checkbox {
+  transform:scale(0.9);
+  margin-right: 1em;
+}
+.protocol-text {
+  font-size: 30rpx;
+}
+.protocol-text a {
+  color: #1b84fc;
+  text-decoration: none;
+}
 </style>

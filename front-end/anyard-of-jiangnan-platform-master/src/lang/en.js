@@ -1,10 +1,7 @@
-import spu from './product/spu/en'
 import attr from './product/attr/en'
-import score from './user/score/en'
 import brand from './product/brand/en'
 import category from './product/category/en'
 import shopUser from './platform/sys-user/en'
-import hotSearch from './platform/hot-search/en'
 import imgbox from './biz/imgbox/en'
 import role from './rbac/role/en'
 import menu from './rbac/menu/en'
@@ -70,20 +67,15 @@ export default {
   platform: {
     config,
     shopUser,
-    hotSearch,
     shopUserAccount
   },
   product: {
     attr,
     brand,
-    category,
-    spu
+    category
   },
   biz: {
     imgbox
-  },
-  user: {
-    score
   },
   components: {
     selector

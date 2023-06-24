@@ -2,7 +2,6 @@
   <div class="mod-menu-home app-container">
     <!-- 搜索相关区域 -->
     <div class="filter-container">
-      <el-button size="mini" icon="el-icon-search" class="filter-item" @click="getPage()">{{ $t('table.search') }}</el-button>
       <el-button v-permission="['rbac:menu:save']" size="mini" icon="el-icon-plus" type="primary" class="filter-item" @click="addOrUpdateHandle()">{{ $t('table.create') }}</el-button>
     </div>
     <!-- 列表相关区域 -->
