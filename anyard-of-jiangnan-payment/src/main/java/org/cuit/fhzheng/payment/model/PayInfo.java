@@ -13,7 +13,7 @@ import org.cuit.fhzheng.common.model.BaseModel;
 public class PayInfo extends BaseModel implements Serializable{
     private static final long serialVersionUID = 1L;
 
-	public static final String DISTRIBUTED_ID_KEY = "mall4cloud-pay";
+	public static final String DISTRIBUTED_ID_KEY = "anyard-of-jiangnan-pay";
 
     /**
      * 支付单号

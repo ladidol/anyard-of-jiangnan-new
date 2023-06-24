@@ -12,7 +12,7 @@ import org.cuit.fhzheng.common.model.BaseModel;
 public class User extends BaseModel implements Serializable{
     private static final long serialVersionUID = 1L;
 
-	public static final String DISTRIBUTED_ID_KEY = "mall4cloud-user";
+	public static final String DISTRIBUTED_ID_KEY = "anyard-of-jiangnan-user";
 
     /**
      * ID

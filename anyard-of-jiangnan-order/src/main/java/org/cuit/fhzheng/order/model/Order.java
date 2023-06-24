@@ -14,7 +14,7 @@ import org.cuit.fhzheng.common.model.BaseModel;
 public class Order extends BaseModel implements Serializable{
     private static final long serialVersionUID = 1L;
 
-	public static final String DISTRIBUTED_ID_KEY = "mall4cloud-order";
+	public static final String DISTRIBUTED_ID_KEY = "anyard-of-jiangnan-order";
 
     /**
      * 订单ID
