@@ -27,11 +27,11 @@
     "nprogress": "^0.2.0",
     "path-to-regexp": "^2.4.0",
     "vue": "^2.6.10",
+    "vue-echarts": "^5.0.0-beta.0",
     "vue-i18n": "^7.3.2",
     "vue-router": "^3.0.2",
     "vuedraggable": "^2.24.3",
-    "vuex": "^3.1.0",
-    "vue-echarts": "^5.0.0-beta.0"
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.4.4",
